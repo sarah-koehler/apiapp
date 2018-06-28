@@ -3,12 +3,10 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-import PageContainer from '../components/PageContainer';
 
-const HelloScreen = (props) => {
+const Greeting = (props) => {
 
   return (
-    <PageContainer {...props}>
       <Query
       query={gql`
         {
@@ -23,7 +21,6 @@ const HelloScreen = (props) => {
         if (loading) return <Text>Loading...</Text>;
         if (error) return console.log(error) || <Text>Error :(</Text>;
 
-        console.log(data)
         const message = data.greeting.who
         return (
             <View style={styles.container}>
@@ -32,21 +29,17 @@ const HelloScreen = (props) => {
         )
       }}
     </Query>
-  </PageContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    height: 50,
     alignItems: 'center',
     justifyContent: 'center',
   },
 });
 
-HelloScreen.navigationOptions = {
-  title: 'Welcome',
-};
 
-export default HelloScreen;
+export default Greeting;
+

@@ -7,16 +7,15 @@ const KeywordItem = (props) => {
   const { keyword, cpc } = props.item
   console.log('render item props:', props)
   return (
-    <View>
-      <Text>{keyword}</Text>
-      <Text>{cpc}</Text>
+    <View style={styles.item}>
+      <Text style={styles.itemText}>{keyword}</Text>
+      <Text style={styles.itemText}>{cpc}€</Text>
     </View>
   )
 }
 
 const KeywordList = (props) => {
-  console.log('query data for search term:', keyword)
-
+  const { keyword } = props
   return (
       <Query
       variables={{ search: keyword, se_id: 1 }}
@@ -53,9 +52,17 @@ const KeywordList = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    borderWidth: 16,
+    borderColor: 'white',
+  },
+  item: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  itemText: {
+    lineHeight: 24,
   },
 });
 

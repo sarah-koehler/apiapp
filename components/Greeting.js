@@ -24,7 +24,8 @@ const Greeting = (props) => {
         const message = data.greeting.who
         return (
             <View style={styles.container}>
-              <Text>{message}</Text>
+              <Text style={{ fontWeight: 'bold' }}>{message}</Text>
+              <Text>You are connected to the Searchmetrics GraphQL API</Text>
             </View>
         )
       }}

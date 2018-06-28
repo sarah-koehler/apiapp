@@ -6,8 +6,8 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { StyleSheet, Text, View } from 'react-native';
 
-import HelloScreen from './screens/HelloScreen';
 import HomeScreen from './screens/HomeScreen';
+import KeywordsScreen from './screens/KeywordsScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import { createStackNavigator } from 'react-navigation';
 import { getApiAccessDataFromStorage } from './helpers/apiKey';
@@ -19,7 +19,7 @@ const httpLink = new HttpLink({
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Hello: HelloScreen,
+    Keywords: KeywordsScreen,
     Settings: SettingsScreen,
   },
   {
@@ -34,7 +34,6 @@ export default class App extends React.Component {
 
   componentDidMount () {
     getApiAccessDataFromStorage(({ apiKey, apiSecret }) => {
-      console.log('get Data callback', apiKey, apiSecret)
       const authLink = setContext((_, { headers }) => ({
         headers: {
           ...headers,

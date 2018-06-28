@@ -21,8 +21,8 @@ const Navigation = (props) => {
         color="#990099"
       />
       <Button
-        title="Hello"
-        onPress={() => navigate('Hello')}
+        title="Keywords"
+        onPress={() => navigate('Keywords')}
         color="#990099"
       />
       <Button

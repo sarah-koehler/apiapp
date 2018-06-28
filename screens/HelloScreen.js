@@ -3,41 +3,44 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
+import PageContainer from '../components/PageContainer';
+
 const HelloScreen = (props) => {
   const { navigate } = props.navigation;
   const name = props.navigation.getParam('name', 'Jim')
 
   return (
-    <Query
-    query={gql`
-      {
-        greeting {
-          randomId
-          who
+    <PageContainer {...props}>
+      <Query
+      query={gql`
+        {
+          greeting {
+            randomId
+            who
+          }
         }
-      }
-    `}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <Text>Loading...</Text>;
-      if (error) return <Text>Error :(</Text>;
+      `}
+    >
+      {({ loading, error, data }) => {
+        if (loading) return <Text>Loading...</Text>;
+        if (error) return <Text>Error :(</Text>;
 
-      console.log(data)
-      const message = data.greeting.who
-      return (
-        <View style={styles.container}>
-          <Text>{message}</Text>
-          <Button
-            title="Home"
-            onPress={() =>
-              navigate('Home', { testProp: 'Jane' })
-            }
-          />
-        </View>
-      )
-    }}
-  </Query>
-
+        console.log(data)
+        const message = data.greeting.who
+        return (
+          <View style={styles.container}>
+            <Text>{message}</Text>
+            <Button
+              title="Home"
+              onPress={() =>
+                navigate('Home', { testProp: 'Jane' })
+              }
+            />
+          </View>
+        )
+      }}
+    </Query>
+  </PageContainer>
   );
 }
 

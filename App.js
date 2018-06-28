@@ -10,6 +10,7 @@ import { REACT_APP_API_KEY, REACT_APP_API_SECRET } from 'react-native-dotenv';
 
 import HelloScreen from './screens/HelloScreen';
 import HomeScreen from './screens/HomeScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import { createStackNavigator } from 'react-navigation';
 
 // add authentication to all request
@@ -35,6 +36,7 @@ const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
     Hello: HelloScreen,
+    Settings: SettingsScreen,
   },
   {
     initialRouteName: 'Home',

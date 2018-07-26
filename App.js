@@ -45,6 +45,11 @@ export default class App extends React.Component {
         client: new ApolloClient({
           link: authLink.concat(httpLink),
           cache: new InMemoryCache(),
+          defaultOptions: {
+            query: {
+              errorPolicy: 'all',
+            }
+          }
         })
       })
     })

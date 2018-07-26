@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 import PageContainer from '../components/PageContainer';
 import KeywordList from '../components/KeywordList';
+import { CTAButton, Headline, SubHeading } from '../components/basics';
 
 class KeywordsScreen extends React.Component {
 
@@ -29,14 +30,16 @@ class KeywordsScreen extends React.Component {
               value={keyword}
               placeHolderColor="grey"
             />
-            <Button
-              title="Search"
-              onPress={this.onSearch}
-              color="#990099"
-            />
+            <CTAButton onPress={this.onSearch}>
+              Search
+            </CTAButton>
           </View>
           { showResults && keyword &&
-            <KeywordList keyword={keyword} />
+            <View>
+              <Headline level='h2'>Similar Keywords</Headline>
+              <SubHeading>Select one to start exploring</SubHeading>
+              <KeywordList keyword={keyword} />
+            </View>
           }
         </View>
       </PageContainer>
@@ -51,7 +54,6 @@ KeywordsScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },

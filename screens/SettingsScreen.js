@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
-// import { AsyncStorage } from "react-native";
 import { getApiAccessDataFromStorage, setApiAccessDataInStorage } from '../helpers/apiKey';
+import { CTAButton, Headline, SubHeading } from '../components/basics';
 
 import PageContainer from '../components/PageContainer';
 
@@ -9,9 +9,6 @@ const styles = StyleSheet.create({
   headerArea: {
     borderWidth: 10,
     borderColor: 'white',
-  },
-  header: {
-    fontSize: 16,
   },
   inputGroup: {
     flexDirection: 'column',
@@ -48,7 +45,8 @@ class SettingsScreen extends React.Component {
     return (
       <PageContainer {...this.props}>
         <View style={styles.headerArea}>
-          <Text style={styles.header}>Set your API key and secret here</Text>
+          <Headline level='h1'>Security</Headline>
+          <SubHeading>Set your API key and secret here</SubHeading>
         </View>
         <View style={styles.inputGroup}>
           <Text style={styles.label}>API Key: </Text>
@@ -68,11 +66,9 @@ class SettingsScreen extends React.Component {
             onChangeText={(text) => this.setState({ apiSecret: text })}
           />
         </View>
-        <Button
-          title="Save"
-          onPress={this.onSave}
-          color="#990099"
-        />
+        <CTAButton onPress={this.onSave}>
+          Save
+        </CTAButton>
       </PageContainer>
     );
   }
